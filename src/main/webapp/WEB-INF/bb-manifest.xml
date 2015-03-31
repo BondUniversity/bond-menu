@@ -1,58 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Author     : Joe Bloggs
-    Copyright My University,  2014.
+    Author     : shane
+    Copyright Bond University,  2014.
 -->
 <manifest>
     <plugin>
         <name value="plugin.name"/>
-        <handle value="stub"/>
+        <handle value="menu"/>
         <description value="plugin.description"/>
         <default-locale value="en_GB"/>
         <version value="1.0"/>
         <requires>
-            <bbversion value="9.1"/>
+            <bbversion value="9.1.201404"/>
         </requires>
         <vendor>
-            <id value="myu"/>
-            <name value="My University"/>
-            <url value="http://www.myu.edu/"/>
-            <description value="My University"/>
+            <id value="bond"/>
+            <name value="Bond University"/>
+            <url value="http://www.bond.edu/"/>
+            <description value="Bond University"/>
         </vendor>
+        <webapp-type value="javaext" />
+
         <http-actions>
             <config value="Config.action"/>
         </http-actions>
 
-
-
         <application-defs>
-            <application handle="myapp" type="shared" name="plugin.tool.title">
+            <application handle="menu-app" type="shared" name="plugin.tool.title">
                 <description>plugin.tool.description</description>
                 <links>
                     <link>
                         <type value="course_tool"/>
-                        <name value="plugin.link.helloworld.name"/>
+                        <name value="plugin.link.menu.name"/>
                         <url value="Tool.action"/>
-                        <handle value="helloworld"/>
+                        <handle value="menu"/>
                         <description
-                                value="plugin.link.helloworld.description"/>
+                                value="plugin.link.menu.description"/>
                     </link>
                     <link>
                         <type value="nav_handle_param"/>
-                        <name value="plugin.link.helloworldconfig.name"/>
+                        <name value="plugin.link.menuconfig.name"/>
                         <url value="Config.action"/>
                         <navhandle value="admin_plugin_manage"/>
-                        <handle value="helloworldconfig"/>
+                        <handle value="menuconfig"/>
                         <description
-                                value="plugin.link.helloworldconfig.description"/>
+                                value="plugin.link.menuconfig.description"/>
                     </link>
                 </links>
             </application>
         </application-defs>
 
+        <extension-defs>
+            <definition namespace="au.edu.bond">
+                <extension id="MenuRenderingHook"
+                           point="blackboard.platform.renderingHook"
+                           class="au.edu.bond.menu.MenuRenderingHook"
+                           singleton="true" />
+            </definition>
+        </extension-defs>
+
         <entitlements>
-            <entitlement uid="myu.stub.admin.MODIFY"
-                         label="myu.stub.entitlement.system"
+            <entitlement uid="bond.menu.admin.MODIFY"
+                         label="bond.menu.entitlement.system"
                          type="System"
                          template="system.plugin.MODIFY"/>
         </entitlements>
@@ -66,7 +75,6 @@
                         name="suppressAccessChecks"/>
 
             <!-- Other Permissions -->
-
             <permission type="java.util.logging.LoggingPermission"
                         name="control"/>
 
@@ -84,6 +92,8 @@
                         actions="get"/>
             <permission type="java.lang.RuntimePermission"
                         name="createClassLoader"/>
+
+            <permission type="java.lang.RuntimePermission" name="injectRenderingHook" />
         </permissions>
     </plugin>
 </manifest>

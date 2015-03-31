@@ -48,6 +48,7 @@ dependencies {
     providedCompile 'jstl:jstl:1.2'
     providedCompile 'blackboard.platform:bb-platform:9.1.201404.160205'
     providedCompile 'blackboard.platform:bb-taglibs:9.1.201404.160205'
+    providedCompile 'org.apache.velocity:velocity:1.7'
 
     testCompile "junit:junit:4.11"
 }

@@ -1,7 +1,7 @@
-package edu.myinst.stripes;
+package au.edu.bond.menu.stripes;
 
 import blackboard.platform.plugin.PlugInUtil;
-import edu.myinst.config.Configuration;
+import au.edu.bond.menu.config.Configuration;
 import net.sourceforge.stripes.action.*;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import com.alltheducks.configutils.service.ConfigurationService;
@@ -10,14 +10,15 @@ import net.sourceforge.stripes.validation.Validate;
 import net.sourceforge.stripes.validation.ValidateNestedProperties;
 
 import java.io.File;
+import java.util.HashMap;
 
 
 public class ConfigAction implements ActionBean {
 
     private ActionBeanContext context;
 
-    @ValidateNestedProperties({@Validate(field = "settingOne", required = true),
-            @Validate(field = "settingTwo", required = true, minvalue = 0, maxvalue = 100)})
+//    @ValidateNestedProperties({@Validate(field = "settingOne", required = true),
+//            @Validate(field = "settingTwo", required = true, minvalue = 0, maxvalue = 100)})
     private Configuration config;
 
     @SpringBean
@@ -40,6 +41,10 @@ public class ConfigAction implements ActionBean {
     }
 
     public Resolution saveConfiguration() {
+        final HashMap<String, String> map = new HashMap<String, String>();
+        map.put("Courses", "blah blah");
+        map.put("MyInstitution", "blah blah");
+        config.setMenuItems(map);
         configService.persistConfiguration(config);
         return new RedirectResolution(PlugInUtil.getPlugInManagerURL(), false);
     }
