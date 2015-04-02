@@ -1,22 +1,10 @@
 <div id="bond-menu">
-    <style>
-        .bond-menu-container {
-            width: 100%;
-            background-color: #666;
-            position: absolute;
-            z-index: 3000;
-            height: 20em;
-            display: none;
-        }
-        .bond-menu-container-show {
-            display: block;
-        }
-    </style>
     #foreach($key in $menuItems.keySet())
         <div class="bond-menu-container" id="${key}Menu">$menuItems.get($key)</div>
     #end
 </div>
-<script type="text/javascript" src="${urlStub}js/bond-wizard.js"></script>
+<link rel="stylesheet" type="text/css" href="${urlStub}css/bond-menu.css">
+<script type="text/javascript" src="${urlStub}js/bond-menu.js"></script>
 <script type="text/javascript">
     Event.observe(document,"dom:loaded", setupBondMenu);
 </script>

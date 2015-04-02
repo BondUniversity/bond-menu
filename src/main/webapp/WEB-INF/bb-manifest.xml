@@ -9,7 +9,7 @@
         <handle value="menu"/>
         <description value="plugin.description"/>
         <default-locale value="en_GB"/>
-        <version value="1.0"/>
+        <version value="1.0.0"/>
         <requires>
             <bbversion value="9.1.201404"/>
         </requires>
@@ -29,14 +29,6 @@
             <application handle="menu-app" type="shared" name="plugin.tool.title">
                 <description>plugin.tool.description</description>
                 <links>
-                    <link>
-                        <type value="course_tool"/>
-                        <name value="plugin.link.menu.name"/>
-                        <url value="Tool.action"/>
-                        <handle value="menu"/>
-                        <description
-                                value="plugin.link.menu.description"/>
-                    </link>
                     <link>
                         <type value="nav_handle_param"/>
                         <name value="plugin.link.menuconfig.name"/>
